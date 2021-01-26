@@ -3,7 +3,7 @@ from .models import Article, Comment
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    created_by_user = serializers.CharField(source='created_by.full_name', read_only=True)
+    created_by_user = serializers.CharField(source='created_by.first_name', read_only=True)
 
     class Meta:
         model = Comment
@@ -28,7 +28,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class ArticleSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(read_only=True, many=True)
-    created_by_user = serializers.CharField(source='created_by.full_name', read_only=True)
+    created_by_user = serializers.CharField(source='created_by.first_name', read_only=True)
 
     class Meta:
         model = Article
