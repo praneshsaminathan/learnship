@@ -34,7 +34,6 @@ ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 # Application definition
 
 DEFAULT_APPS = [
-    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,7 +61,6 @@ INSTALLED_APPS = list(set(DEFAULT_APPS + THIRD_PARTY_APP + CREATED_APP))
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -90,8 +88,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'testproj.wsgi.application'
-
-WHITENOISE_USE_FINDERS = True
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -149,7 +145,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 django_heroku.settings(locals())
 
 SITE_ID = 1
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # AUTH_USER_MODEL = 'account.User'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
