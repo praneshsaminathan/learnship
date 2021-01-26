@@ -29,12 +29,11 @@ SECRET_KEY = 'spcvhv%j0y&w&y37)hu$cc*d$ams5!ml3&0gx+y2(8dgskinv&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 # Application definition
 
 DEFAULT_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,6 +61,7 @@ INSTALLED_APPS = list(set(DEFAULT_APPS + THIRD_PARTY_APP + CREATED_APP))
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -90,6 +90,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'testproj.wsgi.application'
 
+WHITENOISE_USE_FINDERS = True
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -146,7 +147,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 SITE_ID = 1
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # AUTH_USER_MODEL = 'account.User'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
