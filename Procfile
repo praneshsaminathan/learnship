@@ -1,1 +1,1 @@
-web: gunicorn testproj.wsgi --kjg
+web: gunicorn testproj.wsgi
